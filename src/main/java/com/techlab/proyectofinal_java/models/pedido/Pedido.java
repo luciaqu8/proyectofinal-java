@@ -1,37 +1,3 @@
-//package com.techlab.proyectofinal_java.models.pedido;
-//
-//import com.techlab.proyectofinal_java.models.usuario.LineaCarrito;
-//import jakarta.persistence.*;
-//
-//import java.util.List;
-//
-//@Entity
-//@Table(name = "usuarios")
-//public class Pedido {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private int id;
-//    private List<LineaCarrito> items;
-//    private int total;
-//
-//    public Pedido(int id, List<LineaCarrito> items, int total) {
-//        this.id = id;
-//        this.items = items;
-//        this.total = total;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public List<LineaCarrito> getItems() {
-//        return items;
-//    }
-//
-//    public int getTotal() {
-//        return total;
-//    }
-//}
 package com.techlab.proyectofinal_java.models.pedido;
 
 import com.techlab.proyectofinal_java.models.usuario.LineaCarrito;
