@@ -12,11 +12,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "${frontend.url}")
 @RequestMapping("/productos")
 public class ProductController {
 
     @Autowired
     private ProductoService productoService;
+
+    @GetMapping
+    public List<ProductoInfo> obtenerTodosLosProductos() {
+        return productoService.obtenerTodosLosProductos();
+    }
 
     @PostMapping("/new")
     public ResponseEntity<?> agregarProducto(@RequestBody ProductoInfo producto) {
@@ -35,18 +41,32 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<ProductoInfo>> obtenerTodos() {
-        return ResponseEntity.ok(productoService.obtenerTodos());
+    public ResponseEntity<List<ProductoInfo>> obtenerTodosLosProductoss() {
+        return ResponseEntity.ok(productoService.obtenerTodosLosProductos());
     }
 
 
-    @GetMapping("/findId/{id}")
-    public ResponseEntity<?> buscarPorId(@PathVariable int id) {
+//    @GetMapping("/findId/{id}")
+//    public ResponseEntity<?> buscarPorId(@PathVariable int id) {
+//        try {
+//            ProductoInfo producto = productoService.buscarPorId(id);
+//            if (producto == null) {
+//                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                        .body("No se encontró el producto con ID: " + id);
+//            }
+//            return ResponseEntity.ok(producto);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Error al buscar el producto: " + e.getMessage());
+//        }
+//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerProductoPorId(@PathVariable int id) {
         try {
             ProductoInfo producto = productoService.buscarPorId(id);
             if (producto == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("No se encontró el producto con ID: " + id);
+                        .body("Producto con ID " + id + " no encontrado.");
             }
             return ResponseEntity.ok(producto);
         } catch (Exception e) {
@@ -54,7 +74,6 @@ public class ProductController {
                     .body("Error al buscar el producto: " + e.getMessage());
         }
     }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<?> actualizarProducto(@PathVariable int id, @RequestBody ProductoInfo nuevoProducto) {
         try {
@@ -99,6 +118,31 @@ public class ProductController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error inesperado al eliminar producto: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/{id}/descontar-stock")
+    public ResponseEntity<?> descontarStock(@PathVariable int id, @RequestParam int cantidad) {
+        try {
+            ProductoInfo producto = productoService.buscarPorId(id);
+            if (producto == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Producto no encontrado.");
+            }
+
+            if (producto.getStock() < cantidad) {
+                return ResponseEntity.badRequest()
+                        .body("No hay suficiente stock disponible.");
+            }
+
+            producto.setStock(producto.getStock() - cantidad);
+            productoService.actualizarProducto(id, producto);
+
+            return ResponseEntity.ok(producto);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al descontar stock: " + e.getMessage());
         }
     }
 }
