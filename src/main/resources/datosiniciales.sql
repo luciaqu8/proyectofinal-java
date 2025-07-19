@@ -1,3 +1,11 @@
-INSERT INTO productos(nombre, descripcion, precio, stock, categoria, imagen)
-VALUES
-('Auriculares Redragon', 'Inalámbricos con micrófono', 4500, 20, 'Audio', 'https://miapp.com/imagen.jpg');
+INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen) VALUES
+('Procesador AMD Ryzen 5 5600X', '6 núcleos, 12 hilos, ideal para gaming y productividad', 95000, 1, 'Componentes', 'https://mexx-img-2019.s3.amazonaws.com/Procesador-Amd-Ryzen-5-5600X-3-Ghz-AM4_38818_1.jpeg'),
+('Placa de Video NVIDIA RTX 3060', '12GB GDDR6, rendimiento gráfico de última generación', 215000, 5, 'Componentes', 'https://mexx-img-2019.s3.amazonaws.com/Placa-De-Video-GeForce-RTX-3060-12Gb-Msi-Ventus-2X-OC_47460_1.jpeg'),
+('Memoria RAM Corsair Vengeance 16GB', 'DDR4, 3200MHz, ideal para multitarea y gaming', 35000, 20, 'Componentes', 'https://spacegamer.com.ar/img/Public/1058-producto-cmg16gx4m2d3600c18-2-5214.jpg'),
+('SSD Kingston NV2 1TB M.2', 'Almacenamiento rápido con tecnología NVMe Gen 4x4', 42000, 15, 'Componentes', 'https://fullh4rd.com.ar/img/productos/12/hd-ssd-1tb-kingston-snvs-nv2-m2-nvme-gen4-3500mbs-2280-0.jpg'),
+('Placa Madre ASUS TUF B550M-PLUS', 'Soporte para Ryzen, PCIe 4.0 y diseño robusto', 78000, 8, 'Componentes', 'https://www.asus.com/websites/global/products/upuagcxvdypsklzj/img/component/component_product.png'),
+('Fuente EVGA 600W 80 Plus', 'Fuente de alimentación con certificación de eficiencia', 39000, 18, 'Componentes', 'https://www.mastecnologia.com.ar/images/productos/14606.png'),
+('Cooler Master Hyper 212 Black Edition', 'Disipador de CPU con excelente rendimiento térmico', 28000, 12, 'Componentes', 'https://http2.mlstatic.com/D_NQ_NP_914524-MLA71136869457_082023-O.webp'),
+('Gabinete NZXT H510', 'Diseño minimalista, lateral de vidrio templado', 65000, 6, 'Componentes', 'https://images-cdn.ubuy.com.ar/63565da1e658973e4f5a03f5-nzxt-h510-flow-atx-mid-tower-case.jpg'),
+('Disco Rígido Seagate Barracuda 2TB', 'HDD de alto rendimiento para almacenamiento masivo', 32000, 14, 'Componentes', 'https://www.xt-pc.com.ar/img/productos/12/DIS886.jpg'),
+('Tarjeta Wi-Fi TP-Link Archer T4E', 'Adaptador PCIe AC1200 para conexión inalámbrica', 18000, 25, 'Componentes', 'https://s3-sa-east-1.amazonaws.com/saasargentina/KbR4Kq3WMiBRNexunUH4/imagen');
