@@ -27,7 +27,7 @@ public class ProductController {
     @PostMapping("/new")
     public ResponseEntity<?> agregarProducto(@RequestBody ProductoInfo producto) {
         try {
-            producto.validar(); // Tu método personalizado
+            producto.validar();
             ProductoInfo guardado = productoService.agregarProducto(producto);
             return ResponseEntity.ok(guardado);
 
