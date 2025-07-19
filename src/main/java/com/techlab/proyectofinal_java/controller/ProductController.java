@@ -45,21 +45,6 @@ public class ProductController {
         return ResponseEntity.ok(productoService.obtenerTodosLosProductos());
     }
 
-
-//    @GetMapping("/findId/{id}")
-//    public ResponseEntity<?> buscarPorId(@PathVariable int id) {
-//        try {
-//            ProductoInfo producto = productoService.buscarPorId(id);
-//            if (producto == null) {
-//                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-//                        .body("No se encontró el producto con ID: " + id);
-//            }
-//            return ResponseEntity.ok(producto);
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                    .body("Error al buscar el producto: " + e.getMessage());
-//        }
-//    }
     @GetMapping("/{id}")
     public ResponseEntity<?> obtenerProductoPorId(@PathVariable int id) {
         try {
